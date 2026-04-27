@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>FPTK - Asisten Trainer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 10mm;
+            margin: auto;
+            background: white;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid #7cb342;
+            padding: 5px;
+            vertical-align: top;
+        }
+        .header-table td {
+            vertical-align: middle;
+        }
+        .logo-section {
+            width: 120px;
+            text-align: center;
+        }
+        .logo-section img {
+            max-width: 100px;
+        }
+        .title-section {
+            text-align: center;
+        }
+        .title-section h1 {
+            margin: 0;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        .title-section h2 {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .meta-section {
+            width: 180px;
+            font-size: 10px;
+        }
+        .section-header {
+            background-color: #7cb342;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            padding: 3px;
+            text-transform: uppercase;
+        }
+        .label {
+            font-weight: bold;
+            width: 30%;
+        }
+        .field-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer-section {
+            margin-top: 20px;
+        }
+        .signature-box {
+            height: 80px;
+            text-align: center;
+            position: relative;
+        }
+        .signature-img {
+            max-height: 60px;
+            max-width: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .footer-info {
+            font-size: 9px;
+            margin-top: 5px;
+        }
+        .confidential {
+            background-color: #7cb342;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <table class="header-table">
+            <tr>
+                <td rowspan="2" class="logo-section">
+                    <div style="font-weight: bold; color: #7cb342;">TAMBANG MERANTI</div>
+                    <div style="font-size: 8px;">MULIA SEJAHTERA</div>
+                </td>
+                <td class="title-section">
+                    <h1>FORMULIR PERMINTAAN TENAGA KERJA</h1>
+                </td>
+                <td class="meta-section">
+                    HUMAN RESOURCE DEPARTMENT
+                </td>
+            </tr>
+            <tr>
+                <td class="title-section">
+                    <h2>Tambang Meranti Mulia Sejahtera</h2>
+                </td>
+                <td style="padding: 0;">
+                    <table style="margin: 0; border: none; width: 100%;">
+                        <tr>
+                            <td style="border: none; border-bottom: 1px solid #7cb342; border-right: 1px solid #7cb342; font-size: 9px;">20-Apr-2026 | Recruitment</td>
+                        </tr>
+                        <tr>
+                            <td style="border: none;" class="confidential">CONFIDENTIAL</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Analisa Kebutuhan Karyawan -->
+        <div class="section-header">Analisa Kebutuhan Karyawan</div>
+        <table>
+            <tr>
+                <td style="width: 50%;">
+                    <table>
+                        <tr style="border: none;">
+                            <td style="border: none; width: 150px;" class="label">Posisi</td>
+                            <td style="border: none;">: {{Posisi}}</td>
+                        </tr>
+                        <tr style="border: none;">
+                            <td style="border: none;" class="label">Penempatan</td>
+                            <td style="border: none;">: {{Penempatan}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width: 50%;">
+                    <table>
+                        <tr style="border: none;">
+                            <td style="border: none; width: 150px;" class="label">4. Perkiraan Gaji</td>
+                            <td style="border: none;">: Rp {{GajiMin}} - s/d Rp {{GajiMax}}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="label">1. Alasan Permintaan Tenaga Kerja*</div>
+                    <div style="margin-left: 10px; margin-top: 5px;">
+                        <div>Mengganti Karyawan : {{MenggantiKaryawan}}</div>
+                        <div>Penambahan Karyawan : {{PenambahanKaryawan}}</div>
+                        <div>Kerja Waktu Tertentu : {{KerjaWaktuTertentu}}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="label">5. Sumber Recruitment*</div>
+                    <div style="margin-left: 10px; margin-top: 5px;">
+                        : {{SumberRecruitment}}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="label">2. Status Kepegawaian*</div>
+                    <div style="margin-left: 10px; margin-top: 5px;">
+                        : {{StatusKepegawaian}}
+                    </div>
+                </td>
+                <td>
+                    <div class="label">6. Jumlah Permintaan Karyawan</div>
+                    <div style="margin-left: 10px; margin-top: 5px;">
+                        : {{JumlahPermintaan}} Orang
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="label">3. Manpower Saat ini*</div>
+                    <div style="margin-left: 10px; margin-top: 5px;">
+                        : {{ManpowerSaatIni}} Orang
+                    </div>
+                </td>
+                <td>
+                    <div class="label">7. Jangka Waktu Pencarian*</div>
+                    <div style="margin-left: 10px; margin-top: 5px;">
+                        : {{JangkaWaktuPencarian}}
+                        <div style="margin-top: 5px; font-weight: bold;">{{TargetTanggal}}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Tugas dan Kualifikasi -->
+        <table>
+            <tr>
+                <td style="width: 50%; padding: 0;">
+                    <div class="section-header">Uraian Tugas dan Tanggung Jawab</div>
+                    <div style="padding: 10px; min-height: 200px;">
+                        {{UraianTugas}}
+                    </div>
+                </td>
+                <td style="width: 50%; padding: 0;">
+                    <div class="section-header">Kualifikasi yang Dibutuhkan</div>
+                    <table style="margin: 0; border: none;">
+                        <tr style="border: none;"><td style="border: none; width: 120px;" class="label">Pendidikan minimal</td><td style="border: none;">: {{Pendidikan}}</td></tr>
+                        <tr style="border: none;"><td style="border: none;" class="label">Usia</td><td style="border: none;">: {{Usia}}</td></tr>
+                        <tr style="border: none;"><td style="border: none;" class="label">Jenis Kelamin</td><td style="border: none;">: {{JenisKelamin}}</td></tr>
+                        <tr style="border: none;"><td style="border: none;" class="label">Pengalaman Bekerja*</td><td style="border: none;">: {{Pengalaman}}</td></tr>
+                        <tr style="border: none;"><td style="border: none;" class="label">Ketrampilan</td><td style="border: none;">: {{Ketrampilan}}</td></tr>
+                        <tr style="border: none;"><td style="border: none;" class="label">Kemampuan Bahasa</td><td style="border: none;">: {{Bahasa}}</td></tr>
+                        <tr style="border: none;"><td style="border: none;" class="label">Kepribadian</td><td style="border: none;">: {{Kepribadian}}</td></tr>
+                        <tr style="border: none;"><td style="border: none;" class="label">Lain-lain</td><td style="border: none;">: {{LainLain}}</td></tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Lembar Persetujuan -->
+        <div class="section-header">Lembar Persetujuan</div>
+        <table>
+            <tr>
+                <td style="text-align: center; font-weight: bold; width: 25%;">Dibutuhkan</td>
+                <td colspan="2" style="text-align: center; font-weight: bold;">Disetujui</td>
+                <td style="text-align: center; font-weight: bold; width: 25%;">Mengetahui (HRD)</td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-weight: bold;"></td>
+                <td style="text-align: center; font-weight: bold; width: 25%;">Atasan Terkait</td>
+                <td style="text-align: center; font-weight: bold; width: 25%;">Management</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="signature-box">
+                    <!-- Staff Signature placeholder -->
+                    <div style="font-size: 24px; color: #ddd; margin-top: 20px;">TTD</div>
+                </td>
+                <td class="signature-box">
+                    <!-- Manager Signature -->
+                    {{SignatureManager}}
+                </td>
+                <td class="signature-box">
+                    <div style="font-size: 24px; color: #ddd; margin-top: 20px;">TTD</div>
+                </td>
+                <td class="signature-box">
+                    <div style="font-size: 24px; color: #ddd; margin-top: 20px;">TTD</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="font-weight: bold;">{{NamaStaff}}</div>
+                    <div style="font-size: 9px;">{{JabatanStaff}}</div>
+                </td>
+                <td>
+                    <div style="font-weight: bold;">{{NamaManager}}</div>
+                    <div style="font-size: 9px;">{{JabatanManager}}</div>
+                </td>
+                <td>
+                    <div style="font-weight: bold;">{{NamaManagement}}</div>
+                    <div style="font-size: 9px;">{{JabatanManagement}}</div>
+                </td>
+                <td>
+                    <div style="font-weight: bold;">{{NamaHRD}}</div>
+                    <div style="font-size: 9px;">HRD</div>
+                </td>
+            </tr>
+        </table>
+        <div class="footer-info">* Beri tanda centang (v) pada kotak ( ) yang tersedia</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id             String     @id @default(cuid())
+  name           String
+  email          String     @unique
+  password       String     @default("password123") // Simple password for POC
+  role           String     @default("USER") // ADMIN, MANAGER, USER
+  signatureImage String?    // Base64 or path to signature image
+  documents      Document[] @relation("UserDocuments")
+  approvals      Document[] @relation("ManagerApprovals")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
+
+model Template {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  filePath    String     // Path to the PDF template
+  config      String     // JSON string for field coordinates and metadata
+  documents   Document[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  title       String
+  templateId  String
+  template    Template @relation(fields: [templateId], references: [id])
+  userId      String
+  user        User     @relation("UserDocuments", fields: [userId], references: [id])
+  data        String   // JSON string of filled values
+  status      String   @default("PENDING") // DRAFT, PENDING, APPROVED, REJECTED
+  pdfPath     String?  // Path to generated PDF
+  managerId   String?
+  manager     User?    @relation("ManagerApprovals", fields: [managerId], references: [id])
+  approvedAt  DateTime?
+  rejectedAt  DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

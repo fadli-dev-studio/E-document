@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Internal Memo</title>
+    <style>
+        body { font-family: 'Times New Roman', serif; color: #1e293b; padding: 60px; line-height: 1.8; }
+        .memo-header { text-align: center; margin-bottom: 40px; border-bottom: 3px double #334155; padding-bottom: 20px; }
+        .memo-header h1 { font-size: 32px; letter-spacing: 5px; margin: 0; }
+        .info-grid { display: grid; grid-template-columns: 100px 1fr; gap: 10px; margin-bottom: 40px; }
+        .info-label { font-weight: bold; }
+        .content { margin-bottom: 50px; text-align: justify; }
+        .footer-memo { float: right; width: 250px; text-align: center; }
+        .sig-space { height: 80px; margin: 10px 0; display: flex; align-items: center; justify-content: center; }
+        .sig-name { font-weight: bold; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div className="memo-header">
+        <h1>INTERNAL MEMO</h1>
+    </div>
+
+    <div className="info-grid">
+        <div className="info-label">KEPADA</div><div>: Seluruh Karyawan</div>
+        <div className="info-label">DARI</div><div>: Management</div>
+        <div className="info-label">PERIHAL</div><div>: {{Perihal}}</div>
+        <div className="info-label">TANGGAL</div><div>: {{date}}</div>
+    </div>
+
+    <div className="content">
+        <p>Dengan hormat,</p>
+        <p>{{IsiMemo}}</p>
+        <p>Demikian informasi ini kami sampaikan. Atas perhatian dan kerjasamanya kami ucapkan terima kasih.</p>
+    </div>
+
+    <div className="footer-memo">
+        <p>Hormat Kami,</p>
+        <div className="sig-space">
+            {{#if signature}}
+            <img src="{{signature}}" alt="Signature" style="height: 100%;">
+            {{/if}}
+        </div>
+        <p className="sig-name">{{managerName}}</p>
+        <p>{{managerRole}}</p>
+    </div>
+</body>
+</html>

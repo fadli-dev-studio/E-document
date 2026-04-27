@@ -55,6 +55,7 @@ async function main() {
     },
   });
 
+  console.log("Database seeded successfully!");
   console.log({ user, manager });
 }
 

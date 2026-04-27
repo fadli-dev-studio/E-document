@@ -6,6 +6,31 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
   try {
+    // AUTO-SEED: Jika database kosong, isi dengan data default
+    const userCount = await prisma.user.count();
+    if (userCount === 0) {
+      console.log("Database empty, auto-seeding default accounts...");
+      await prisma.user.createMany({
+        data: [
+          { email: "user@example.com", name: "Staff User", role: "USER", password: "user123" },
+          { email: "admin@example.com", name: "System Admin", role: "ADMIN", password: "admin123" },
+          { email: "manager@example.com", name: "Manager Approval", role: "MANAGER", password: "manager123" },
+        ]
+      });
+      // Seed templates also
+      await prisma.template.upsert({
+        where: { id: "template-fptk" },
+        update: {},
+        create: {
+          id: "template-fptk",
+          name: "FPTK ASISTEN TRAINER",
+          description: "Form Permintaan Tenaga Kerja untuk Asisten Trainer",
+          filePath: "templates/fptk.html",
+          config: JSON.stringify({ fields: ["Posisi", "Penempatan", "NamaStaff"] }),
+        },
+      });
+    }
+
     const { email, password } = await req.json();
 
     const user = await prisma.user.findUnique({

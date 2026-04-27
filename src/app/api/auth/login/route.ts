@@ -1,11 +1,23 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { cookies } from "next/headers";
+import fs from "fs";
+import path from "path";
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
   try {
+    // VERCEL WORKAROUND: Copy SQLite file to /tmp
+    if (process.env.VERCEL === "1") {
+      const dbPath = path.join(process.cwd(), "prisma", "dev.db");
+      const tmpPath = "/tmp/dev.db";
+      if (fs.existsSync(dbPath) && !fs.existsSync(tmpPath)) {
+        console.log("Copying database to /tmp...");
+        fs.copyFileSync(dbPath, tmpPath);
+      }
+    }
+
     // AUTO-SEED: Jika database kosong, isi dengan data default
     const userCount = await prisma.user.count();
     if (userCount === 0) {

@@ -36,10 +36,10 @@ const templates = [
     name: "Internal Memo - Libur Nasional", 
     description: "Memo Pengumuman Libur",
     fields: [
-      { name: "NomorMemo", label: "Nomor Memo", type: "text" },
-      { name: "Perihal", label: "Perihal", type: "text" },
-      { name: "IsiMemo", label: "Isi Memo", type: "textarea" },
-      { name: "NamaStaff", label: "Nama Pengaju", type: "text" },
+      { name: "NomorMemo", label: "Nomor Memo", type: "text", placeholder: "Contoh: 001/MEMO/IV/2026" },
+      { name: "Perihal", label: "Perihal", type: "text", placeholder: "Contoh: Pengumuman Libur" },
+      { name: "IsiMemo", label: "Isi Memo", type: "textarea", placeholder: "Isi pesan memo..." },
+      { name: "NamaStaff", label: "Nama Pengaju", type: "text", placeholder: "Nama Anda" },
     ]
   },
 ];

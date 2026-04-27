@@ -3,6 +3,8 @@ import { DashboardStats } from "@/components/Dashboard";
 import { FileText, Clock, CheckCircle, XCircle } from "lucide-react";
 import prisma from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   // Mock data for now since DB might not be ready
   const stats = {

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { renderTemplate } from "@/lib/html-renderer";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
   try {
     const { template, data } = await req.json();
